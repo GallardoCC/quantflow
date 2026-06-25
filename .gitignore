@@ -1,0 +1,25 @@
+# Secretos — NUNCA subir las API keys
+backend/.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Datos/caché
+*.db
+
+# Logs y archivos de prueba/depuración
+*.log
+backend/r1.json
+backend/r2.json
+backend/r3.json
+backend/r4.json
+backend/resp.json
+backend/rt.json

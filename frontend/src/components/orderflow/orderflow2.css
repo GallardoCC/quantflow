@@ -1,0 +1,170 @@
+/* ORDER FLOW v2 — estilos. Todo con los design tokens de App.css (sin hardcodear). */
+
+.ofx { padding: 20px 20px 80px; max-width: 1500px; margin: 0 auto; }
+
+.ofx-intro h2 { font-size: 1.4rem; font-weight: 650; letter-spacing: -0.01em; margin: 0 0 6px; }
+.ofx-intro p { color: var(--text-2); font-size: 0.9rem; line-height: 1.55; max-width: 960px; margin: 0; }
+.ofx-intro em { color: var(--accent-2); font-style: normal; }
+
+/* ── toolbar ─────────────────────────────────────────────────────────────── */
+.ofx-toolbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  flex-wrap: wrap; margin: 16px 0 10px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 10px 12px;
+}
+.ofx-tb-left, .ofx-tb-mid, .ofx-tb-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.ofx-tk { font-weight: 650; font-size: 0.95rem; letter-spacing: 0.02em; }
+.ofx-seg { display: inline-flex; background: var(--surface-2); border-radius: 8px; padding: 3px; }
+.ofx-seg button {
+  border: 0; background: transparent; color: var(--text-2); cursor: pointer;
+  padding: 5px 11px; border-radius: 6px; font-size: 0.78rem; font-variant-numeric: tabular-nums;
+  transition: all 0.15s ease;
+}
+.ofx-seg button:hover { color: var(--text); }
+.ofx-seg button.on { background: var(--accent); color: #fff; }
+.ofx-live, .ofx-refresh {
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text-2);
+  border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 0.78rem; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.ofx-live.on { color: var(--pos); border-color: rgba(46,189,133,0.4); }
+.ofx-live-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.ofx-live.on .ofx-live-dot { box-shadow: 0 0 6px var(--pos); animation: ofx-pulse 1.4s infinite; }
+@keyframes ofx-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.ofx-refresh { font-size: 1rem; padding: 6px 12px; }
+
+/* ── subnav ──────────────────────────────────────────────────────────────── */
+.ofx-subnav {
+  display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 16px;
+  border-bottom: 1px solid var(--border); padding-bottom: 0;
+}
+.ofx-subtab {
+  text-decoration: none; color: var(--text-2); font-size: 0.82rem; font-weight: 550;
+  padding: 9px 14px; border-bottom: 2px solid transparent; transition: all 0.15s ease;
+}
+.ofx-subtab:hover { color: var(--text); }
+.ofx-subtab.on { color: var(--accent-2); border-bottom-color: var(--accent); }
+
+/* ── panel / ChartShell ──────────────────────────────────────────────────── */
+.ofx-panel {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; margin-bottom: 16px; overflow: hidden;
+}
+.ofx-panel-h {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 13px 16px; border-bottom: 1px solid var(--border); flex-wrap: wrap;
+}
+.ofx-panel-tt { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.ofx-panel-title { font-size: 0.95rem; font-weight: 620; }
+.ofx-panel-sub { color: var(--text-3); font-size: 0.76rem; font-variant-numeric: tabular-nums; }
+.ofx-panel-right { display: flex; gap: 6px; align-items: center; }
+.ofx-panel-body { padding: 16px; }
+.ofx-panel-foot { padding: 0 16px 14px; }
+
+.ofx-state { padding: 40px 16px; text-align: center; color: var(--text-3); font-size: 0.85rem; }
+.ofx-state.error { color: var(--neg); }
+.ofx-state button { margin-left: 8px; background: var(--surface-3); border: 0; color: var(--text); padding: 4px 10px; border-radius: 6px; cursor: pointer; }
+.ofx-empty, .ofx-sub { color: var(--text-3); font-size: 0.8rem; }
+.ofx-note { color: var(--text-3); font-size: 0.78rem; line-height: 1.5; margin: 0; }
+.ofx-disclaimer { color: var(--text-3); font-size: 0.74rem; line-height: 1.5; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 12px; }
+
+/* ── badges / metrics ────────────────────────────────────────────────────── */
+.ofx-badge { font-size: 0.7rem; font-weight: 650; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.ofx-pos { background: var(--pos-dim); color: var(--pos); }
+.ofx-neg { background: var(--neg-dim); color: var(--neg); }
+.ofx-warn { background: rgba(202,162,74,0.15); color: #d9b25e; }
+.ofx-neu { background: var(--surface-3); color: var(--text-2); }
+
+.ofx-kpis, .ofx-metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+.ofx-metric { background: var(--surface-2); border-radius: 8px; padding: 10px 12px; }
+.ofx-metric-k { font-size: 0.68rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.04em; }
+.ofx-metric-v { font-size: 1.05rem; font-weight: 620; font-variant-numeric: tabular-nums; margin-top: 3px; }
+.ofx-metric-v.t-pos { color: var(--pos); } .ofx-metric-v.t-neg { color: var(--neg); } .ofx-metric-v.t-neu { color: var(--text-2); }
+
+/* ── overview ────────────────────────────────────────────────────────────── */
+.ofx-spark-wrap { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+.ofx-spark { width: 240px; height: 44px; }
+.ofx-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 16px 0; }
+.ofx-card {
+  text-decoration: none; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 6px;
+  transition: all 0.15s ease;
+}
+.ofx-card:hover { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent-dim); transform: translateY(-1px); }
+.ofx-card-title { font-weight: 620; font-size: 0.92rem; color: var(--accent-2); }
+.ofx-card-desc { font-size: 0.8rem; color: var(--text-2); line-height: 1.45; }
+
+/* ── legend ──────────────────────────────────────────────────────────────── */
+.ofx-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; font-size: 0.75rem; color: var(--text-2); }
+.ofx-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.ofx-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+
+/* ── volume profile ──────────────────────────────────────────────────────── */
+.ofx-vp { position: relative; }
+.ofx-vp-tip { margin-top: 8px; font-size: 0.78rem; color: var(--text-2); font-variant-numeric: tabular-nums; }
+
+/* ── heatmap ─────────────────────────────────────────────────────────────── */
+.ofx-hm-ctrls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.ofx-hm-ctrls button { border: 1px solid var(--border); background: var(--surface-2); color: var(--text-2); border-radius: 6px; padding: 4px 10px; font-size: 0.76rem; cursor: pointer; }
+.ofx-hm-ctrls button.on { color: var(--accent-2); border-color: var(--accent); }
+.ofx-hm-scale { display: inline-flex; align-items: center; gap: 2px; font-size: 0.72rem; color: var(--text-3); }
+.ofx-hm-scale i { width: 16px; height: 12px; display: inline-block; }
+.ofx-hm-scale small { margin-left: 8px; }
+.ofx-hm-canvas-wrap { position: relative; }
+.ofx-hm-canvas { width: 100%; height: 440px; display: block; border-radius: 8px; background: #000; cursor: crosshair; }
+.ofx-hm-tip { position: absolute; pointer-events: none; background: var(--surface-3); border: 1px solid var(--border); border-radius: 6px; padding: 6px 9px; font-size: 0.72rem; color: var(--text-1); font-variant-numeric: tabular-nums; z-index: 5; white-space: nowrap; }
+
+/* ── footprint ───────────────────────────────────────────────────────────── */
+.ofx-fp-ctrls { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.ofx-fp-hint { font-size: 0.72rem; color: var(--text-3); }
+.ofx-fp-scroll { overflow: auto; max-height: 600px; border: 1px solid var(--border); border-radius: 8px; }
+.ofx-fp-scroll canvas { display: block; }
+
+/* ── delta ───────────────────────────────────────────────────────────────── */
+.ofx-delta svg { display: block; }
+
+/* ── DOM / order book ────────────────────────────────────────────────────── */
+.ofx-dom { max-width: 460px; margin: 0 auto; font-variant-numeric: tabular-nums; }
+.ofx-dom-side { display: flex; flex-direction: column; }
+.ofx-dom-row { position: relative; display: flex; align-items: center; gap: 8px; padding: 2px 10px; height: 22px; font-size: 0.78rem; overflow: hidden; }
+.ofx-dom-bar { position: absolute; right: 0; top: 0; bottom: 0; opacity: 0.18; }
+.ofx-dom-row.ask .ofx-dom-bar { background: var(--neg); }
+.ofx-dom-row.bid .ofx-dom-bar { background: var(--pos); }
+.ofx-dom-row.big { outline: 1px solid currentColor; }
+.ofx-dom-row.ask { color: var(--neg); } .ofx-dom-row.bid { color: var(--pos); }
+.ofx-dom-price { width: 90px; z-index: 1; }
+.ofx-dom-size { margin-left: auto; color: var(--text-2); z-index: 1; }
+.ofx-dom-flag { z-index: 1; font-size: 0.6rem; }
+.ofx-dom-mid { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; background: var(--surface-2); border-radius: 6px; margin: 4px 0; }
+.ofx-dom-midprice { font-weight: 650; font-size: 0.95rem; }
+.ofx-dom-spread { font-size: 0.74rem; color: var(--text-3); }
+
+/* ── ribbon ──────────────────────────────────────────────────────────────── */
+.ofx-ribbon-wrap { margin-top: 4px; }
+.ofx-ribbon { display: flex; height: 20px; border-radius: 5px; overflow: hidden; }
+.ofx-ribbon span { display: block; height: 100%; }
+.ofx-ribbon-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; font-size: 0.73rem; color: var(--text-2); }
+.ofx-ribbon-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.ofx-ribbon-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+
+/* ── ML ──────────────────────────────────────────────────────────────────── */
+.ofx-ml-block { background: var(--surface-2); border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+.ofx-ml-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.ofx-ml-title { font-size: 0.88rem; font-weight: 600; }
+.ofx-ml-dir { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; }
+@media (max-width: 820px) { .ofx-ml-dir { grid-template-columns: 1fr; } }
+.ofx-ml-gauge { text-align: center; }
+.ofx-ml-gauge svg { width: 130px; height: auto; }
+.ofx-ml-gauge-val { font-size: 1.4rem; font-weight: 680; margin-top: -6px; font-variant-numeric: tabular-nums; }
+.ofx-ml-gauge-lbl { font-size: 0.72rem; color: var(--text-3); }
+.ofx-ml-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
+.ofx-ml-calib { text-align: center; } .ofx-calib { width: 160px; height: 160px; }
+.ofx-imp { margin-top: 12px; display: grid; gap: 5px; }
+.ofx-imp-row { display: grid; grid-template-columns: 90px 1fr 40px; gap: 8px; align-items: center; font-size: 0.74rem; }
+.ofx-imp-name { color: var(--text-2); } .ofx-imp-val { text-align: right; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.ofx-imp-bar { background: var(--surface-3); border-radius: 3px; height: 8px; overflow: hidden; }
+.ofx-imp-bar i { display: block; height: 100%; background: var(--accent); }
+.ofx-events { display: grid; gap: 7px; }
+.ofx-event { background: var(--surface); border-radius: 7px; padding: 8px 11px; font-size: 0.8rem; line-height: 1.4; }
+.ofx-event-meta { color: var(--text-3); font-size: 0.72rem; font-variant-numeric: tabular-nums; }

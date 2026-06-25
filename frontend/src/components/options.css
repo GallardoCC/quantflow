@@ -1,0 +1,85 @@
+/* ===== Griegas de opciones (Black-Scholes) — usa tokens de App.css ===== */
+.og { max-width: 1200px; margin: 0 auto; padding: var(--s5) var(--s4) var(--s7); }
+.og-intro { margin-bottom: var(--s5); }
+.og-intro-title { font-family: var(--sans); font-size: 1.6rem; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin: 0 0 var(--s2); }
+.og-intro-sub { color: var(--text-2); font-size: 0.9rem; max-width: 760px; line-height: 1.55; margin: 0; }
+
+.og-toolbar { display: flex; gap: var(--s3); align-items: flex-end; flex-wrap: wrap; margin-bottom: var(--s5); }
+.og-seg, .og-exp { display: inline-flex; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); padding: 3px; gap: 2px; }
+.og-seg button, .og-exp button { background: transparent; border: 0; color: var(--muted); font-family: var(--mono); font-size: 0.8rem; padding: 7px 13px; border-radius: var(--r-sm); cursor: pointer; transition: all var(--dur-1) var(--ease); }
+.og-seg button:hover, .og-exp button:hover { color: var(--text-2); }
+.og-seg button.on.call { background: var(--pos-dim); color: var(--pos); }
+.og-seg button.on.put { background: var(--neg-dim); color: var(--neg); }
+.og-exp button.on { background: var(--accent-dim); color: var(--accent-2); }
+.og-field { display: flex; flex-direction: column; gap: 4px; }
+.og-field span { font-family: var(--mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.og-field input { width: 84px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-sm); color: var(--text); font-family: var(--mono); font-size: 0.85rem; padding: 7px 10px; }
+.og-field input:focus { outline: none; border-color: var(--accent); }
+.og-run { background: var(--accent); border: 0; color: #fff; font-family: var(--mono); font-size: 0.82rem; padding: 8px 16px; border-radius: var(--r-md); cursor: pointer; }
+.og-run:hover:not(:disabled) { filter: brightness(1.1); }
+.og-run:disabled { opacity: 0.55; cursor: default; }
+
+.og-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s4); margin-bottom: var(--s4); box-shadow: var(--shadow-sm); }
+.og-section { display: block; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); margin-bottom: var(--s3); }
+
+.og-hdr { display: flex; align-items: baseline; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s4); }
+.og-hdr-tk { font-family: var(--mono); font-size: 1.5rem; font-weight: 600; color: var(--text); }
+.og-hdr-name { color: var(--text-2); }
+.og-hdr-kind { font-family: var(--mono); font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+.og-hdr-kind.call { background: var(--pos-dim); color: var(--pos); }
+.og-hdr-kind.put { background: var(--neg-dim); color: var(--neg); }
+.og-hdr-meta { color: var(--muted); font-size: 0.8rem; margin-left: auto; }
+.og-mny { font-weight: 700; }
+.og-mny-itm { color: var(--pos); }
+.og-mny-otm { color: var(--neg); }
+.og-mny-atm { color: var(--amber); }
+
+.og-greeks { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s3); margin-bottom: var(--s4); }
+.og-kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: var(--s3); display: flex; flex-direction: column; gap: 3px; }
+.og-kpi-big { grid-column: span 2; background: var(--surface-2); }
+.og-kpi-l { font-family: var(--mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted); }
+.og-kpi-v { font-family: var(--mono); font-size: 1.3rem; font-weight: 600; color: var(--text); }
+.og-kpi-v.accent { color: var(--accent-2); }
+.og-kpi-v.neg { color: var(--neg); }
+.og-kpi-v.pos { color: var(--pos); }
+.og-kpi-s { font-size: 0.68rem; color: var(--text-2); }
+
+.og-svg { display: block; }
+.og-legend { display: flex; gap: var(--s4); margin-top: var(--s2); font-family: var(--mono); font-size: 0.72rem; flex-wrap: wrap; }
+.og-lg { display: inline-flex; align-items: center; gap: 6px; color: var(--text-2); }
+.og-lg::before { content: ""; width: 14px; height: 2px; border-radius: 2px; }
+.og-lg-now::before { background: var(--accent); }
+.og-lg-exp::before { background: #7c9bff; border-top: 2px dashed #7c9bff; height: 0; }
+.og-lg-k::before { background: var(--amber); }
+.og-lg-be::before { background: #7c9bff; }
+
+.og-table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 0.82rem; }
+.og-table th { color: var(--muted); font-weight: 500; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+.og-table td { padding: 8px 10px; color: var(--text-2); border-bottom: 1px solid var(--border-soft); }
+.ta-r { text-align: right; } .ta-c { text-align: center; }
+.og-table .pos { color: var(--pos); } .og-table .neg { color: var(--neg); } .og-table .dim { color: var(--muted); }
+.og-row-base { background: var(--accent-dim); }
+.og-row-base td { color: var(--text); }
+.og-chain-k { color: var(--text); font-weight: 600; }
+.og-chain-mny { display: block; font-size: 0.62rem; color: var(--muted); font-weight: 400; }
+
+.og-mini-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s4); }
+.og-mini-h { font-family: var(--mono); font-size: 0.72rem; color: var(--text-2); display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.og-mini-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+.og-detail-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+.og-heat-grid { display: grid; gap: 2px; align-items: center; }
+.og-heat-corner, .og-heat-col, .og-heat-row { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); text-align: center; }
+.og-heat-col.k { color: var(--amber); font-weight: 700; }
+.og-heat-row { text-align: right; padding-right: 4px; }
+.og-heat-cell { height: 22px; border-radius: 2px; }
+.og-heat-scale { display: flex; align-items: center; gap: 8px; margin-top: var(--s2); font-family: var(--mono); font-size: 0.66rem; color: var(--muted); }
+.og-heat-bar { flex: 1; height: 6px; border-radius: 999px; background: linear-gradient(90deg, rgb(20,26,46), rgb(91,160,240)); }
+
+.og-note { color: var(--muted); font-size: 0.76rem; line-height: 1.5; margin: var(--s3) 0 0; }
+.og-banner { margin-top: var(--s4); }
+
+@media (max-width: 1024px) {
+  .og-greeks { grid-template-columns: repeat(2, 1fr); }
+  .og-mini-grid, .og-detail-row { grid-template-columns: 1fr; }
+}

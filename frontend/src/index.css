@@ -1,0 +1,36 @@
+/* ============================================================
+   QuantFlow — base global
+   Fondo en capas (gradiente + micro-rejilla + grano) que da el
+   look "caro". Nunca negro plano.
+   ============================================================ */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+html, body { min-height: 100%; }
+
+body {
+  /* Premium canvas: two soft light sources over deep slate. Calm, with depth. */
+  background:
+    radial-gradient(80% 60% at 15% -10%, rgba(91, 130, 240, 0.10) 0%, transparent 55%),
+    radial-gradient(70% 60% at 100% 0%, rgba(124, 155, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(120% 90% at 50% -10%, #10141f 0%, #0a0c12 55%, #07080d 100%) fixed;
+  position: relative;
+}
+
+/* Faint dot-grid for subtle technical texture (calmer than a hard line grid). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* El contenido vive por encima de las capas de fondo */
+#root { position: relative; z-index: 2; }

@@ -1,0 +1,326 @@
+/* ─── Technical Analysis Page (TecnicosPage) ──────────────────────────────── */
+
+.tc {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--s5) var(--s5) var(--s7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s5);
+}
+
+/* ── Controls ─────────────────────────────────────────────────────────────── */
+.tc-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  flex-wrap: wrap;
+}
+
+.tc-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  flex-shrink: 0;
+}
+
+.tc-ticker-label {
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.06em;
+}
+
+.tc-ranges {
+  display: flex;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 3px;
+}
+
+.tc-ranges button {
+  padding: 5px 12px;
+  border: none;
+  background: none;
+  color: var(--text-2);
+  border-radius: 7px;
+  font-size: 0.78rem;
+  font-family: var(--mono);
+  cursor: pointer;
+  transition: all var(--dur-1) var(--ease);
+  white-space: nowrap;
+}
+
+.tc-ranges button:hover { color: var(--text); background: var(--surface-2); }
+
+.tc-ranges button.active {
+  background: var(--accent-dim);
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.tc-ema-toggles {
+  display: flex;
+  gap: var(--s2);
+  margin-left: auto;
+}
+
+.tc-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--r-md);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-family: var(--mono);
+  cursor: pointer;
+  transition: all var(--dur-1) var(--ease);
+  user-select: none;
+}
+
+.tc-toggle:hover { border-color: var(--border-strong); color: var(--text-2); }
+
+.tc-toggle.on {
+  border-color: var(--border-strong);
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.tc-toggle-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.35;
+  transition: opacity var(--dur-1);
+}
+
+.tc-toggle.on .tc-toggle-dot { opacity: 1; }
+
+.tc-toggle-dot.ema3 { background: #22c39e; }
+.tc-toggle-dot.ema9 { background: #e0a93b; }
+
+/* ── Card base ────────────────────────────────────────────────────────────── */
+.tc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  animation: fadeUp var(--dur-3) var(--ease) both;
+}
+
+.tc-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s3) var(--s5);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.tc-card-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+  text-transform: uppercase;
+}
+
+.tc-card-sub {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-left: var(--s3);
+  font-family: var(--mono);
+}
+
+/* ── Price chart ──────────────────────────────────────────────────────────── */
+.tc-price-chart {
+  height: 420px;
+  padding: var(--s2) 0 0;
+}
+
+/* ── EMA legend ───────────────────────────────────────────────────────────── */
+.tc-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.tc-leg {
+  font-size: 0.68rem;
+  font-family: var(--mono);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.tc-leg-ema3 { color: #22c39e; background: rgba(34, 195, 158, 0.1); border: 1px solid rgba(34, 195, 158, 0.2); }
+.tc-leg-ema9 { color: #e0a93b; background: rgba(224, 169, 59, 0.1); border: 1px solid rgba(224, 169, 59, 0.2); }
+
+/* ── RSI + ATR row ────────────────────────────────────────────────────────── */
+.tc-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s5);
+}
+
+.tc-rsi-chart { height: 140px; padding: var(--s2) var(--s2) 0; }
+.tc-atr-chart { height: 120px; padding: var(--s2) var(--s2) 0; }
+
+/* ── KPI mini ──────────────────────────────────────────────────────────────── */
+.tc-kpi-mini {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.tc-kpi-val {
+  font-family: var(--mono);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+
+.tc-kpi-zone {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.tc-good, .tc-good .tc-kpi-val, .tc-good .tc-kpi-zone { color: var(--pos); }
+.tc-bad,  .tc-bad  .tc-kpi-val, .tc-bad  .tc-kpi-zone { color: var(--neg); }
+.tc-neutral { color: var(--text-2); }
+
+/* ── Indicator info ───────────────────────────────────────────────────────── */
+.tc-indicator-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s3) var(--s5) var(--s4);
+  border-top: 1px solid var(--border-soft);
+}
+
+.tc-info-tag {
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  color: var(--text-2);
+}
+
+.tc-info-desc {
+  font-size: 0.74rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ── Volume Profile ────────────────────────────────────────────────────────── */
+.tc-vol-body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--s5);
+  padding: var(--s4) var(--s5);
+  align-items: start;
+}
+
+.tc-vol-chart {
+  min-height: 280px;
+}
+
+.tc-vol-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  padding-top: var(--s2);
+}
+
+.tc-vol-desc {
+  font-size: 0.8rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.tc-vol-legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.tc-vol-leg-item {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.tc-vol-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.tc-vol-dot.hvn  { background: rgba(91, 130, 240, 0.55); }
+.tc-vol-dot.lvn  { background: rgba(91, 130, 240, 0.12); }
+.tc-vol-dot.cur  { background: #5b82f0; }
+
+.tc-vol-mode-note {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  padding: var(--s2) var(--s3);
+  background: var(--surface-2);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border-soft);
+}
+
+/* ── Segmented control inside tc-card ─────────────────────────────────────── */
+.tc-seg {
+  display: flex;
+  gap: 2px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 3px;
+}
+
+.tc-seg button {
+  padding: 4px 12px;
+  border: none;
+  background: none;
+  color: var(--text-2);
+  border-radius: 7px;
+  font-size: 0.74rem;
+  cursor: pointer;
+  transition: all var(--dur-1);
+}
+
+.tc-seg button.on {
+  background: var(--surface-3);
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .tc-row-2 { grid-template-columns: 1fr; }
+  .tc-vol-body { grid-template-columns: 1fr; }
+  .tc-ema-toggles { margin-left: 0; }
+}
+
+@media (max-width: 640px) {
+  .tc { padding: var(--s4) var(--s4) var(--s6); }
+  .tc-price-chart { height: 300px; }
+  .tc-controls { gap: var(--s3); }
+}

@@ -1,0 +1,292 @@
+/* ============================================================================
+   Análisis Fundamental — estilos del módulo (prefijo .fa-)
+   Hereda los design tokens premium-minimal de App.css
+   ========================================================================== */
+
+.fa {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: var(--s5, 24px) var(--s4, 16px) 64px;
+  font-family: var(--sans);
+  color: var(--text);
+}
+
+/* ── Intro ────────────────────────────────────────────────────────────────*/
+.fa-intro-title {
+  font-size: 26px; font-weight: 650; letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+.fa-intro-sub {
+  color: var(--text-2); font-size: 13.5px; line-height: 1.6;
+  max-width: 760px; margin: 0;
+}
+
+/* ── Toolbar ──────────────────────────────────────────────────────────────*/
+.fa-toolbar {
+  display: flex; gap: 12px; align-items: center;
+  margin: 22px 0 18px; flex-wrap: wrap;
+}
+.fa-run-btn {
+  background: var(--accent); color: #fff; border: none;
+  border-radius: var(--r-md); padding: 9px 18px; font-size: 13px;
+  font-weight: 600; cursor: pointer; font-family: var(--sans);
+  transition: filter 0.15s, opacity 0.15s;
+}
+.fa-run-btn:hover { filter: brightness(1.08); }
+.fa-run-btn:disabled { opacity: 0.5; cursor: default; }
+
+.fa-banner { margin: 18px 0; }
+
+/* ── Cards genéricas ──────────────────────────────────────────────────────*/
+.fa-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 18px;
+}
+.fa-section-label {
+  display: block; font-size: 11px; font-weight: 650;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 14px;
+}
+
+.fa-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.fa-three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+@media (max-width: 980px) {
+  .fa-two-col, .fa-three-col { grid-template-columns: 1fr; }
+}
+
+/* ── Cabecera de empresa ──────────────────────────────────────────────────*/
+.fa-asset-hdr {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 12px; margin: 26px 0 16px;
+}
+.fa-asset-id { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.fa-asset-ticker {
+  font-family: var(--mono); font-size: 30px; font-weight: 700;
+  letter-spacing: -0.01em; color: var(--text);
+}
+.fa-asset-name { font-size: 17px; color: var(--text-2); }
+.fa-asset-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+.fa-tag {
+  background: var(--accent-dim); color: var(--accent-2);
+  border-radius: 100px; padding: 4px 12px; font-size: 11.5px; font-weight: 600;
+}
+.fa-tag-ghost { background: var(--surface-3); color: var(--text-2); }
+
+.fa-profile-grid {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  border-radius: var(--r-md); overflow: hidden; margin-bottom: 18px;
+}
+@media (max-width: 760px) { .fa-profile-grid { grid-template-columns: repeat(3, 1fr); } }
+.fa-prof-stat {
+  background: var(--surface); padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.fa-prof-lbl { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.fa-prof-val { font-family: var(--mono); font-size: 14.5px; font-weight: 600; }
+
+.fa-desc-text { color: var(--text-2); font-size: 13px; line-height: 1.65; margin: 0; }
+
+/* ── HERO decisión ────────────────────────────────────────────────────────*/
+.fa-hero { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center; }
+@media (max-width: 760px) { .fa-hero { grid-template-columns: 1fr; } }
+.fa-hero-score { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.fa-ring-num { font-family: var(--mono); font-size: 30px; font-weight: 700; }
+.fa-ring-den { font-size: 9px; fill: var(--muted); }
+.fa-hero-class { font-size: 15px; font-weight: 650; }
+.fa-hero-rec {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.05em;
+  padding: 5px 16px; border-radius: 100px; background: var(--surface-3);
+}
+.fa-hero-detail { min-width: 0; }
+.fa-comp-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.fa-comp-row { display: grid; grid-template-columns: 170px 1fr 34px; align-items: center; gap: 10px; }
+.fa-comp-name { font-size: 12.5px; color: var(--text-2); }
+.fa-comp-name em { color: var(--muted); font-style: normal; }
+.fa-comp-bar { height: 7px; background: var(--surface-3); border-radius: 100px; overflow: hidden; }
+.fa-comp-fill { display: block; height: 100%; background: var(--accent); border-radius: 100px; transition: width 0.5s; }
+.fa-comp-val { font-family: var(--mono); font-size: 13px; font-weight: 600; text-align: right; }
+
+.fa-method { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin: 10px 0 0; }
+.fa-empty-note { font-size: 12.5px; color: var(--muted); }
+
+/* ── Calidad ──────────────────────────────────────────────────────────────*/
+.fa-quality-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.fa-quality-score { font-family: var(--mono); font-size: 32px; font-weight: 700; }
+.fa-quality-score em { font-size: 15px; color: var(--muted); font-style: normal; }
+.fa-quality-grade {
+  font-weight: 700; font-size: 15px; color: var(--accent-2);
+  background: var(--accent-dim); padding: 3px 12px; border-radius: 8px;
+}
+.fa-quality-label { font-size: 13px; color: var(--text-2); }
+.fa-quality-bd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border);
+  border-radius: var(--r-sm); overflow: hidden; margin-bottom: 14px; }
+.fa-qbd-item { background: var(--surface-2); padding: 10px; text-align: center; display: flex; flex-direction: column; gap: 2px; }
+.fa-qbd-val { font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--accent-2); }
+.fa-qbd-lbl { font-size: 10px; color: var(--muted); }
+.fa-drivers { margin-top: 10px; }
+.fa-drivers-h { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.fa-drivers ul { margin: 5px 0 0; padding-left: 18px; }
+.fa-drivers li { font-size: 12px; color: var(--text-2); line-height: 1.5; margin-bottom: 3px; }
+
+/* ── Valoración ───────────────────────────────────────────────────────────*/
+.fa-val-head { display: flex; gap: 28px; margin-bottom: 14px; flex-wrap: wrap; }
+.fa-val-big { display: flex; flex-direction: column; gap: 2px; }
+.fa-val-lbl { font-size: 11px; color: var(--muted); }
+.fa-val-num { font-family: var(--mono); font-size: 26px; font-weight: 700; }
+.fa-val-conf { font-size: 11px; color: var(--accent-2); }
+.fa-val-up { font-size: 12.5px; font-weight: 600; }
+.fa-val-verdict {
+  display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
+  padding: 4px 14px; border-radius: 100px; margin-bottom: 16px;
+}
+.fa-verdict-infravalorada { background: var(--pos-dim); color: var(--pos); }
+.fa-verdict-sobrevalorada { background: var(--neg-dim); color: var(--neg); }
+.fa-verdict-justa { background: var(--surface-3); color: var(--text-2); }
+.fa-verdict-sin\ datos { background: var(--surface-3); color: var(--muted); }
+
+.fa-val-table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+.fa-val-table td { padding: 8px 6px; border-top: 1px solid var(--border); font-size: 12.5px; }
+.fa-val-table td:nth-child(2) { font-family: var(--mono); font-weight: 600; text-align: right; }
+.fa-val-meta { color: var(--muted); font-size: 11px; text-align: right; }
+.fa-val-combined td { font-weight: 700; color: var(--accent-2); border-top: 1px solid var(--border-strong); }
+
+/* Barra de valoración */
+.fa-valbar { margin: 8px 0 4px; padding: 22px 0 28px; }
+.fa-valbar-track { position: relative; height: 6px; background: var(--surface-3); border-radius: 100px; }
+.fa-valbar-range { position: absolute; top: 0; height: 100%; background: var(--accent-dim); border-radius: 100px; }
+.fa-valbar-marker { position: absolute; top: 50%; width: 2px; height: 18px; transform: translate(-50%, -50%); }
+.fa-valbar-fair { background: var(--accent); }
+.fa-valbar-price { background: var(--text); }
+.fa-valbar-tip {
+  position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+  font-size: 10px; white-space: nowrap; color: var(--accent-2); font-family: var(--mono);
+}
+.fa-valbar-tip-down { bottom: auto; top: 14px; color: var(--text); }
+
+/* ── Tablas de ratios ─────────────────────────────────────────────────────*/
+.fa-ratio-cat { margin-bottom: 22px; }
+.fa-ratio-cat-title { font-size: 13px; font-weight: 650; color: var(--text); margin: 0 0 8px; }
+.fa-ratio-table-wrap { overflow-x: auto; }
+.fa-ratio-table, .fa-comp-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.fa-ratio-table th, .fa-comp-table th {
+  text-align: left; font-size: 10.5px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 8px;
+  border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.fa-ratio-table td, .fa-comp-table td { padding: 7px 8px; border-bottom: 1px solid var(--border-soft); }
+.fa-ratio-name { font-weight: 600; }
+.fa-ratio-val { font-family: var(--mono); font-weight: 600; }
+.fa-ratio-bm { font-family: var(--mono); color: var(--text-2); }
+.fa-ratio-interp { color: var(--text-2); font-size: 11.5px; line-height: 1.45; max-width: 360px; }
+.fa-ratio-spark { width: 64px; }
+@media (max-width: 860px) { .fa-hide-sm { display: none; } }
+
+.fa-pos { color: var(--pos) !important; }
+.fa-neg { color: var(--neg) !important; }
+.fa-pos-soft { color: #7fd3b0 !important; }
+.fa-neutral-c { color: var(--text) !important; }
+
+.fa-spark { display: block; }
+.fa-spark-na { color: var(--muted); }
+
+/* ── Modelos (Piotroski/Altman/Buffett) ───────────────────────────────────*/
+.fa-model-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+.fa-model-big { font-family: var(--mono); font-size: 30px; font-weight: 700; }
+.fa-model-big em { font-size: 15px; color: var(--muted); font-style: normal; }
+.fa-model-verdict { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; padding: 3px 11px; border-radius: 100px; background: var(--surface-3); }
+.fa-model-label { display: block; font-size: 12.5px; color: var(--text-2); margin-bottom: 12px; }
+
+.fa-checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+.fa-checklist li { display: flex; gap: 9px; align-items: flex-start; }
+.fa-ck-icon { width: 18px; height: 18px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 700; margin-top: 1px; }
+.fa-ck-pass .fa-ck-icon { background: var(--pos-dim); color: var(--pos); }
+.fa-ck-fail .fa-ck-icon { background: var(--neg-dim); color: var(--neg); }
+.fa-ck-na .fa-ck-icon { background: var(--surface-3); color: var(--muted); }
+.fa-ck-body { display: flex; flex-direction: column; min-width: 0; }
+.fa-ck-body strong { font-size: 12.5px; font-weight: 600; }
+.fa-ck-detail { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+.fa-altman-scale { margin: 14px 0; }
+.fa-altman-zones { display: flex; justify-content: space-between; font-size: 9.5px; margin-bottom: 5px; }
+.fa-az-red { color: var(--neg); } .fa-az-grey { color: var(--muted); } .fa-az-green { color: var(--pos); }
+.fa-altman-track { position: relative; height: 6px; border-radius: 100px;
+  background: linear-gradient(90deg, var(--neg) 0%, var(--neg) 30%, #e0a83b 30%, #e0a83b 50%, var(--pos) 50%); }
+.fa-altman-marker { position: absolute; top: 50%; width: 3px; height: 16px; background: var(--text);
+  transform: translate(-50%, -50%); border-radius: 2px; box-shadow: 0 0 0 2px var(--surface); }
+
+/* ── Competidores ─────────────────────────────────────────────────────────*/
+.fa-comp-head { display: flex; gap: 32px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.fa-comp-adv-num { font-family: var(--mono); font-size: 30px; font-weight: 700; color: var(--accent-2); }
+.fa-comp-adv-num em { font-size: 14px; color: var(--muted); font-style: normal; }
+.fa-comp-adv-lbl { display: block; font-size: 12px; color: var(--text-2); }
+.fa-comp-share-num { font-family: var(--mono); font-size: 22px; font-weight: 700; }
+.fa-comp-share-lbl { display: block; font-size: 11px; color: var(--muted); }
+.fa-comp-reasons { margin: 0 0 14px; padding-left: 18px; }
+.fa-comp-reasons li { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+.fa-comp-table td { font-family: var(--mono); font-size: 12px; white-space: nowrap; }
+.fa-comp-table td:first-child { font-family: var(--sans); }
+.fa-comp-self { background: var(--accent-dim); }
+.fa-comp-self td { font-weight: 600; }
+.fa-comp-self em { color: var(--accent-2); font-style: normal; font-size: 10.5px; }
+
+/* ── Sentimiento ──────────────────────────────────────────────────────────*/
+.fa-sent-head { display: flex; gap: 16px; align-items: center; margin-bottom: 10px; }
+.fa-sent-score { font-family: var(--mono); font-size: 34px; font-weight: 700; }
+.fa-sent-score em { font-size: 15px; color: var(--muted); font-style: normal; }
+.fa-sent-verdict { display: block; font-size: 13px; font-weight: 700; }
+.fa-sent-counts { font-size: 11px; color: var(--muted); }
+.fa-sent-summary { font-size: 12.5px; color: var(--text-2); line-height: 1.5; margin: 0 0 12px; }
+.fa-sent-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; max-height: 280px; overflow-y: auto; }
+.fa-sent-item { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; line-height: 1.4; }
+.fa-sent-item a, .fa-sent-item span { color: var(--text-2); text-decoration: none; }
+.fa-sent-item a:hover { color: var(--text); }
+.fa-sent-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; background: var(--muted); }
+.fa-sent-positivo .fa-sent-dot { background: var(--pos); }
+.fa-sent-negativo .fa-sent-dot { background: var(--neg); }
+.fa-sent-src { color: var(--muted); font-size: 10.5px; font-style: normal; }
+
+/* ── Crecimiento ──────────────────────────────────────────────────────────*/
+.fa-growth-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border);
+  border-radius: var(--r-sm); overflow: hidden; margin-bottom: 16px; }
+@media (max-width: 760px) { .fa-growth-grid { grid-template-columns: repeat(3, 1fr); } }
+.fa-growth-stat { background: var(--surface-2); padding: 10px; text-align: center; display: flex; flex-direction: column; gap: 2px; }
+.fa-growth-val { font-family: var(--mono); font-size: 16px; font-weight: 700; }
+.fa-growth-lbl { font-size: 10px; color: var(--muted); }
+.fa-mini-label { display: block; font-size: 11px; color: var(--muted); margin: 12px 0 2px; }
+
+/* ── Gráficos SVG ─────────────────────────────────────────────────────────*/
+.fa-chart { margin: 4px 0 8px; }
+.fa-chart-empty { font-size: 12px; color: var(--muted); padding: 20px 0; text-align: center; }
+.fa-chart-labels { display: flex; justify-content: space-between; margin-top: 3px; }
+.fa-chart-lbl { font-size: 9.5px; color: var(--muted); font-family: var(--mono); }
+.fa-chart-axis { font-size: 9px; color: var(--muted); text-align: right; }
+.fa-legend { display: flex; gap: 14px; margin-top: 8px; }
+.fa-legend-item { font-size: 11px; color: var(--text-2); display: flex; align-items: center; gap: 5px; }
+.fa-legend-dot { width: 9px; height: 9px; border-radius: 2px; }
+
+/* ── Horizontes ───────────────────────────────────────────────────────────*/
+.fa-hz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 760px) { .fa-hz-grid { grid-template-columns: 1fr; } }
+.fa-hz-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); padding: 16px; }
+.fa-hz-title { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.fa-hz-verdict { display: block; font-size: 18px; font-weight: 700; margin: 6px 0 10px; }
+.fa-hz-bar { height: 6px; background: var(--surface-3); border-radius: 100px; overflow: hidden; margin-bottom: 8px; }
+.fa-hz-fill { display: block; height: 100%; background: var(--accent); border-radius: 100px; }
+.fa-hz-drivers { font-size: 11.5px; color: var(--text-2); line-height: 1.4; }
+
+/* ── Disclaimer ───────────────────────────────────────────────────────────*/
+.fa-disclaimer { font-size: 11px; color: var(--muted); line-height: 1.5; margin-top: 22px; text-align: center; }
+
+/* ── Skeletons ────────────────────────────────────────────────────────────*/
+.fa-loading { display: flex; flex-direction: column; gap: 18px; }
+.fa-skel { background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 50%, var(--surface) 75%);
+  background-size: 200% 100%; animation: fa-shimmer 1.4s infinite; border-radius: var(--r-lg); }
+.fa-skel-hero { height: 180px; }
+.fa-skel-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.fa-skel-card { height: 130px; }
+@keyframes fa-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }

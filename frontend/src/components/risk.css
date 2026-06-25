@@ -1,0 +1,181 @@
+/* risk.css — Gestión de Riesgo IA */
+
+/* ── Page layout ── */
+.risk-page { max-width: 1200px; margin: 0 auto; padding: var(--s4); }
+.risk-header { margin-bottom: var(--s5); }
+.risk-title { font-size: 1.5rem; font-weight: 600; color: var(--text); font-family: var(--sans); }
+.risk-subtitle { color: var(--text-2); font-size: 0.875rem; margin-top: var(--s1); }
+
+/* ── Score gauge section ── */
+.risk-score-section { display: flex; flex-direction: column; align-items: center; margin-bottom: var(--s6); }
+.risk-gauge-wrap { position: relative; display: inline-flex; flex-direction: column; align-items: center; }
+.risk-level-badge { margin-top: var(--s2); padding: 6px 18px; border-radius: var(--r-full); font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.risk-level-bajo { background: rgba(34,197,94,0.15); color: #22c55e; }
+.risk-level-moderado { background: rgba(234,179,8,0.15); color: #eab308; }
+.risk-level-alto { background: rgba(239,68,68,0.15); color: #ef4444; }
+.risk-recommendation { max-width: 520px; text-align: center; color: var(--text-2); font-size: 0.9rem; line-height: 1.5; margin-top: var(--s3); background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s3) var(--s4); }
+
+/* ── Components grid (radar-like display) ── */
+.risk-components { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); margin-bottom: var(--s5); }
+@media (max-width: 768px) { .risk-components { grid-template-columns: repeat(2, 1fr); } }
+.risk-comp-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s3); }
+.risk-comp-label { font-size: 0.75rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--s1); }
+.risk-comp-value { font-size: 1.1rem; font-weight: 600; font-family: var(--mono); color: var(--text); }
+.risk-comp-bar { height: 4px; border-radius: 2px; background: var(--surface-2); margin-top: var(--s2); overflow: hidden; }
+.risk-comp-bar-fill { height: 100%; border-radius: 2px; transition: width 0.6s ease; }
+.risk-comp-bar-fill.low { background: #22c55e; }
+.risk-comp-bar-fill.mid { background: #eab308; }
+.risk-comp-bar-fill.high { background: #ef4444; }
+
+/* ── Navigation cards to sub-pages ── */
+.risk-nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
+@media (max-width: 900px) { .risk-nav-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px) { .risk-nav-grid { grid-template-columns: 1fr; } }
+.risk-nav-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-xl); padding: var(--s4); cursor: pointer; transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s; text-decoration: none; display: flex; flex-direction: column; gap: var(--s2); }
+.risk-nav-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.risk-nav-card-icon { font-size: 1.5rem; }
+.risk-nav-card-title { font-weight: 600; color: var(--text); font-size: 0.95rem; font-family: var(--sans); }
+.risk-nav-card-desc { font-size: 0.8rem; color: var(--text-2); line-height: 1.4; }
+.risk-nav-card-metric { font-family: var(--mono); font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-top: auto; padding-top: var(--s2); border-top: 1px solid var(--border); }
+.risk-nav-card-arrow { align-self: flex-end; color: var(--text-3); font-size: 0.8rem; }
+
+/* ── Subpage common ── */
+.risk-back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-2); font-size: 0.85rem; cursor: pointer; margin-bottom: var(--s4); background: none; border: none; padding: 0; }
+.risk-back:hover { color: var(--text); }
+.risk-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-xl); padding: var(--s4); margin-bottom: var(--s4); }
+.risk-section-title { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: var(--s3); font-family: var(--sans); display: flex; align-items: center; gap: var(--s2); }
+.risk-kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--s3); margin-bottom: var(--s4); }
+.risk-kpi { background: var(--surface-2); border-radius: var(--r-lg); padding: var(--s3); }
+.risk-kpi-label { font-size: 0.72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.04em; }
+.risk-kpi-val { font-size: 1.25rem; font-weight: 700; font-family: var(--mono); color: var(--text); margin-top: 4px; }
+.risk-kpi-sub { font-size: 0.75rem; color: var(--text-2); margin-top: 2px; }
+
+/* ── Regime badge ── */
+.regime-badge { display: inline-block; padding: 4px 14px; border-radius: var(--r-full); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.regime-ALCISTA { background: rgba(34,197,94,0.15); color: #22c55e; }
+.regime-BAJISTA { background: rgba(239,68,68,0.15); color: #ef4444; }
+.regime-LATERAL { background: rgba(148,163,184,0.15); color: var(--text-2); }
+.regime-ALTA_VOLATILIDAD { background: rgba(249,115,22,0.15); color: #f97316; }
+
+/* ── Stress test scenario rows ── */
+.stress-scenarios { display: flex; flex-direction: column; gap: var(--s2); }
+.stress-row { display: grid; grid-template-columns: 1fr 90px 90px 100px 80px; align-items: center; gap: var(--s3); background: var(--surface-2); border-radius: var(--r-md); padding: var(--s2) var(--s3); }
+@media (max-width: 700px) { .stress-row { grid-template-columns: 1fr 1fr; gap: var(--s2); } }
+.stress-name { font-size: 0.875rem; color: var(--text); font-weight: 500; }
+.stress-shock { font-family: var(--mono); font-size: 0.875rem; }
+.stress-impact { font-family: var(--mono); font-size: 0.875rem; font-weight: 600; }
+.stress-price { font-family: var(--mono); font-size: 0.8rem; color: var(--text-2); }
+.stress-prob { font-size: 0.75rem; padding: 2px 8px; border-radius: var(--r-full); background: var(--surface); color: var(--text-2); }
+.text-pos { color: var(--pos, #22c55e); }
+.text-neg { color: var(--neg, #ef4444); }
+.text-neutral { color: var(--text-2); }
+
+/* ── Correlation matrix ── */
+.corr-matrix-wrap { overflow-x: auto; }
+.corr-matrix { border-collapse: collapse; width: 100%; font-family: var(--mono); font-size: 0.8rem; }
+.corr-matrix th { padding: 8px 12px; color: var(--text-3); font-weight: 600; text-align: center; }
+.corr-matrix td { padding: 8px 12px; text-align: center; border-radius: 4px; }
+
+/* ── ML probability bar ── */
+.ml-prob-bar { height: 8px; border-radius: 4px; background: var(--surface-2); overflow: hidden; margin-top: var(--s2); }
+.ml-prob-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent), #f97316); transition: width 0.8s ease; }
+
+/* ── Skeleton ── */
+.risk-skeleton { background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 50%, var(--surface) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--r-lg); }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* ── VaR distribution histogram ── */
+.var-histogram { margin-top: var(--s3); }
+
+/* ── Position sizing inputs ── */
+.sizing-inputs { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--s3); margin-bottom: var(--s4); }
+.sizing-input-group { display: flex; flex-direction: column; gap: 6px; }
+.sizing-input-label { font-size: 0.75rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.04em; }
+.sizing-input { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); padding: 8px 12px; color: var(--text); font-family: var(--mono); font-size: 0.9rem; width: 100%; box-sizing: border-box; }
+.sizing-input:focus { outline: none; border-color: var(--accent); }
+.sizing-btn { background: var(--accent); color: white; border: none; border-radius: var(--r-md); padding: 10px 20px; cursor: pointer; font-weight: 600; font-size: 0.875rem; align-self: flex-end; margin-top: 20px; }
+.sizing-btn:hover { opacity: 0.9; }
+
+/* ── Portfolio tickers input ── */
+.portfolio-input-row { display: flex; gap: var(--s3); margin-bottom: var(--s4); align-items: flex-end; }
+.portfolio-ticker-input { flex: 1; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); padding: 10px 14px; color: var(--text); font-family: var(--mono); font-size: 0.9rem; }
+.portfolio-ticker-input:focus { outline: none; border-color: var(--accent); }
+
+/* ── Disclaimer ── */
+.risk-disclaimer { font-size: 0.72rem; color: var(--text-3); margin-top: var(--s3); padding: var(--s2) var(--s3); background: var(--surface-2); border-radius: var(--r-md); line-height: 1.5; }
+
+/* ── Scenario cards (VaR) ── */
+.var-scenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); margin-bottom: var(--s4); }
+@media (max-width: 700px) { .var-scenarios { grid-template-columns: 1fr; } }
+.var-scenario-card { background: var(--surface-2); border-radius: var(--r-lg); padding: var(--s3); border: 1px solid var(--border); }
+.var-scenario-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-3); margin-bottom: var(--s2); }
+.var-scenario-return { font-size: 1.5rem; font-weight: 700; font-family: var(--mono); margin-bottom: var(--s1); }
+.var-scenario-desc { font-size: 0.78rem; color: var(--text-2); line-height: 1.4; }
+
+/* ── Confidence / Horizon selectors ── */
+.risk-controls { display: flex; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s4); }
+.risk-control-group { display: flex; flex-direction: column; gap: 6px; }
+.risk-control-label { font-size: 0.72rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.04em; }
+.risk-control-select { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); padding: 7px 12px; color: var(--text); font-family: var(--mono); font-size: 0.875rem; cursor: pointer; }
+.risk-control-select:focus { outline: none; border-color: var(--accent); }
+
+/* ── Stress expandable rows ── */
+.stress-row-wrap { border-radius: var(--r-md); overflow: hidden; background: var(--surface-2); margin-bottom: var(--s1); }
+.stress-row-header { display: grid; grid-template-columns: 1fr 90px 90px 100px 80px; align-items: center; gap: var(--s3); padding: var(--s2) var(--s3); cursor: pointer; }
+.stress-row-header:hover { background: var(--surface-3, var(--surface)); }
+.stress-row-desc { padding: var(--s2) var(--s3); font-size: 0.8rem; color: var(--text-2); line-height: 1.5; border-top: 1px solid var(--border); }
+@media (max-width: 700px) { .stress-row-header { grid-template-columns: 1fr 1fr; gap: var(--s2); } }
+
+/* ── Moving average indicators ── */
+.ma-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--s3); }
+.ma-card { background: var(--surface-2); border-radius: var(--r-lg); padding: var(--s3); display: flex; flex-direction: column; gap: 4px; }
+.ma-label { font-size: 0.72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.04em; }
+.ma-price { font-size: 1.1rem; font-weight: 700; font-family: var(--mono); color: var(--text); }
+.ma-indicator { font-size: 0.75rem; font-weight: 600; }
+.ma-above { color: #22c55e; }
+.ma-below { color: #ef4444; }
+
+/* ── Confidence bar (Regime) ── */
+.confidence-bar-wrap { margin: var(--s2) 0 var(--s4); }
+.confidence-bar-track { height: 8px; border-radius: 4px; background: var(--surface-2); overflow: hidden; }
+.confidence-bar-fill { height: 100%; border-radius: 4px; background: var(--accent); transition: width 0.8s ease; }
+.confidence-label { font-size: 0.8rem; color: var(--text-2); margin-bottom: 6px; }
+
+/* ── Trading implication box ── */
+.trading-implication { background: rgba(91,130,240,0.08); border: 1px solid rgba(91,130,240,0.25); border-radius: var(--r-lg); padding: var(--s3) var(--s4); margin-bottom: var(--s4); font-size: 0.9rem; color: var(--text); line-height: 1.5; }
+
+/* ── Metrics table (Portfolio) ── */
+.risk-metrics-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.risk-metrics-table th { text-align: left; padding: 8px 12px; color: var(--text-3); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); }
+.risk-metrics-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); font-family: var(--mono); font-size: 0.85rem; }
+.risk-metrics-table tr:last-child td { border-bottom: none; }
+
+/* ── Warnings ── */
+.risk-warning { background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.3); border-radius: var(--r-md); padding: var(--s2) var(--s3); font-size: 0.85rem; color: #f97316; margin-bottom: var(--s2); }
+
+/* ── Stop loss display ── */
+.stop-loss-display { display: flex; align-items: center; gap: var(--s4); background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: var(--r-lg); padding: var(--s3) var(--s4); margin-bottom: var(--s4); }
+.stop-loss-price { font-size: 1.75rem; font-weight: 700; font-family: var(--mono); color: #ef4444; }
+.stop-loss-pct { font-size: 1rem; font-weight: 600; font-family: var(--mono); color: #ef4444; }
+.stop-loss-label { font-size: 0.75rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* ── Regime adjustment badge ── */
+.regime-adj-badge { display: inline-block; padding: 4px 14px; border-radius: var(--r-full); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.regime-adj-REDUCIR { background: rgba(239,68,68,0.15); color: #ef4444; }
+.regime-adj-NORMAL { background: rgba(148,163,184,0.15); color: var(--text-2); }
+.regime-adj-AUMENTAR { background: rgba(34,197,94,0.15); color: #22c55e; }
+
+/* ── Capital allocation bar ── */
+.capital-bar-wrap { margin: var(--s3) 0; }
+.capital-bar-track { height: 12px; background: var(--surface-2); border-radius: 6px; overflow: visible; position: relative; }
+.capital-bar-fill { height: 100%; border-radius: 6px; background: var(--accent); transition: width 0.8s ease; }
+.capital-bar-max { position: absolute; top: 0; height: 100%; width: 2px; background: #ef4444; }
+.capital-bar-labels { display: flex; justify-content: space-between; margin-top: 4px; font-size: 0.72rem; color: var(--text-3); font-family: var(--mono); }
+
+/* ── Stress SVG bar chart ── */
+.stress-chart-wrap { overflow-x: auto; margin-top: var(--s3); }
+
+/* ── Diversification score display ── */
+.diversification-score-wrap { display: flex; align-items: center; gap: var(--s4); padding: var(--s3) 0; }
+.diversification-score-num { font-size: 3rem; font-weight: 700; font-family: var(--mono); color: var(--accent); }
+.diversification-score-label { font-size: 0.875rem; color: var(--text-2); }
