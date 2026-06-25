@@ -6,6 +6,7 @@ export default defineConfig({
   server: {
     host: true,       // expone en 0.0.0.0 → accesible desde la red local
     port: 5173,
+    allowedHosts: ['.trycloudflare.com'],  // permite el túnel público de Cloudflare
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8000',

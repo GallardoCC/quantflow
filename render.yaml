@@ -1,0 +1,30 @@
+# Configuración de despliegue del backend en Render (plan free).
+# Render lee este archivo al conectar el repo (Blueprint).
+services:
+  - type: web
+    name: quantflow-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      # Las KEYS se rellenan en el panel de Render (NO se suben al repo).
+      - key: FMP_API_KEY
+        sync: false
+      - key: FINNHUB_API_KEY
+        sync: false
+      - key: ALPHAVANTAGE_API_KEY
+        sync: false
+      - key: FRED_API_KEY
+        sync: false
+      - key: ALPACA_API_KEY
+        sync: false
+      - key: ALPACA_SECRET
+        sync: false
+      - key: ALPACA_BASE_URL
+        sync: false
+      # URL del frontend en Cloudflare Pages (para CORS). Se rellena tras desplegar el front.
+      - key: FRONTEND_ORIGIN
+        sync: false

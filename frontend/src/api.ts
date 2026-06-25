@@ -1,5 +1,8 @@
 // Cliente de la QuantFlow API. Toda la comunicación con el backend pasa por aquí.
-const BASE = "/api";
+// En local: "/api" → proxy de Vite al backend en :8000.
+// En producción: se define VITE_API_BASE con la URL del backend en Render
+//   (ej. "https://quantflow-api.onrender.com/api").
+const BASE = import.meta.env.VITE_API_BASE || "/api";
 
 export type AssetType =
   | "stock" | "etf" | "crypto" | "future" | "forex" | "index" | "unknown";

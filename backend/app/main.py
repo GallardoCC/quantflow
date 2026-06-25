@@ -4,6 +4,8 @@ QuantFlow API — pedestal 1: meter datos de mercado a la app.
 Backend FastAPI que expone la capa de datos (market.py) al frontend React.
 Arranque:  uvicorn app.main:app --reload --port 8000
 """
+import os
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -14,10 +16,18 @@ from app.data import (
 
 app = FastAPI(title="QuantFlow API", version="0.1.0")
 
-# El frontend Vite corre en :5173 — permitimos su origen.
+# Orígenes permitidos: local (Vite) + cualquier dominio extra por env var
+# (en producción se pone FRONTEND_ORIGIN con la URL de Cloudflare Pages).
+_origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
+_extra = os.getenv("FRONTEND_ORIGIN", "")
+if _extra:
+    _origins += [o.strip() for o in _extra.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=_origins,
+    # Acepta automáticamente los despliegues de Cloudflare Pages y los túneles.
+    allow_origin_regex=r"https://.*\.(pages\.dev|trycloudflare\.com)",
     allow_methods=["*"],
     allow_headers=["*"],
 )
